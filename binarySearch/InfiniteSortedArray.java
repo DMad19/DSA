@@ -1,7 +1,8 @@
+package binarySearch;
 class InfiniteSortedArray{
     public static void main(String[] args) {
         int[] nums= {3,5,7,9,10,90,100,130,140,160,170};
-        int target = 10;
+        int target = 1;
         int ans = findindex(nums, target);
         System.out.println(ans);
     }
