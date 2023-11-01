@@ -4,28 +4,30 @@ import java.util.Arrays;
 
 public class SelectionSort {
     public static void main(String[] args) {
-        int[] arr = {5,4,-3,-2,-1};
-        SSort(arr);
-        System.out.println(Arrays.toString(arr));
+        int[] arr = {};
+        System.out.println(Arrays.toString(ssort(arr)));
     }
-    static void SSort(int[] arr){
+    static int[] ssort(int[] arr){
         for(int i=0;i<arr.length-1;i++){
-            int maxIndex = getMaxIndex(arr,0,arr.length-i-1);
-            swap(arr,maxIndex,arr.length-i-1);
+            //find max item position
+            int max = findmax(arr, i);
+            //swap max ele with last len-i-1 index
+            swap(arr, max, arr.length-i-1);
         }
+        return arr;
     }
-    static void swap(int[] arr, int maxIndex, int last) {
-        int temp = arr[maxIndex];
-        arr[maxIndex] = arr[last];
-        arr[last] = temp;
-    }
-    static int getMaxIndex(int[] arr, int start, int last) {
-        int max = start;
-        for(int i=start;i<=last;i++){
-            if(arr[i]>arr[max]){
-                max = i;
+    static int findmax(int[] arr,int i){
+        int max = 0;
+        for(int j=1;j<arr.length-i;j++){
+            if(arr[j]>arr[max]){
+                max=j;
             }
         }
         return max;
+    }
+    static void swap(int[] arr,int max,int posToSwap){
+        int temp = arr[posToSwap];
+            arr[posToSwap] = arr[max];
+            arr[max] = temp;
     }
 }
